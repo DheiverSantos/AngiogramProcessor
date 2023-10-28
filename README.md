@@ -1,54 +1,52 @@
----
+# Processamento de Imagens de Angiograma com Python
 
-## Angiogram Image Processing with Python
+Este script em Python demonstra como processar imagens de angiograma usando a biblioteca OpenCV. Imagens de angiograma são comumente usadas em imagens médicas para visualizar vasos sanguíneos, particularmente no contexto da angiografia coronária.
 
-This Python script demonstrates how to process angiogram images using the OpenCV library. Angiogram images are commonly used in medical imaging to visualize blood vessels, particularly in the context of coronary angiography.
+## Como o Código Funciona
 
-### How the Code Works
+1. **Importação de Bibliotecas**: O código começa importando as bibliotecas necessárias:
+   - `cv2` para operações de visão computacional
+   - `numpy` para cálculos numéricos
+   - `matplotlib` para visualização de imagens
 
-1. **Importing Libraries**: The code starts by importing the necessary libraries:
-   - `cv2` for computer vision operations
-   - `numpy` for numerical computations
-   - `matplotlib` for image visualization
+2. **Definição da Classe - `AngiogramProcessor`**:
+   - A classe `AngiogramProcessor` é definida para encapsular a funcionalidade de processamento de imagens.
+   - Ela é inicializada com o caminho para uma imagem de angiograma.
 
-2. **Class Definition - `AngiogramProcessor`**:
-   - The `AngiogramProcessor` class is defined to encapsulate the image processing functionality.
-   - It initializes with the path to an angiogram image.
+3. **Passos de Processamento de Imagem**:
+   - O método `load_image` carrega a imagem do angiograma.
+   - O método `convert_to_grayscale` converte a imagem para escala de cinza.
+   - O método `equalize_histogram` melhora o contraste da imagem usando equalização de histograma.
+   - O método `smooth_image` aplica suavização Gaussiana para reduzir ruídos.
+   - O método `threshold_and_process` cria uma máscara binária dos vasos sanguíneos usando limiar adaptativo.
 
-3. **Image Processing Steps**:
-   - The `load_image` method loads the angiogram image.
-   - The `convert_to_grayscale` method converts the image to grayscale.
-   - The `equalize_histogram` method enhances image contrast using histogram equalization.
-   - The `smooth_image` method applies Gaussian smoothing to reduce noise.
-   - The `threshold_and_process` method creates a binary mask of blood vessels using adaptive thresholding.
+4. **Visualização de Imagens**:
+   - O método `show_original_image` exibe a imagem original do angiograma.
+   - O método `show_veins_mask` exibe a máscara binária dos vasos sanguíneos.
 
-4. **Image Visualization**:
-   - The `show_original_image` method displays the original angiogram image.
-   - The `show_veins_mask` method displays the binary mask of blood vessels.
+5. **Análise de Componentes Conectados**:
+   - O método `keep_connected_components` mantém apenas os maiores componentes conectados na máscara de vasos.
+   - Ele utiliza análise de componentes conectados para identificar e manter as estruturas vasculares significativas.
 
-5. **Connected Component Analysis**:
-   - The `keep_connected_components` method retains only the largest connected components in the vessel mask.
-   - It uses connected component analysis to identify and keep the significant vessel structures.
+6. **Processamento e Exibição**:
+   - O método `process_and_show` orquestra toda a sequência de processamento de imagens.
+   - Ele exibe tanto a imagem original quanto a máscara de vasos processada lado a lado.
 
-6. **Processing and Display**:
-   - The `process_and_show` method orchestrates the entire image processing pipeline.
-   - It displays both the original image and the processed vessel mask side by side.
+7. **Exemplo de Uso**:
+   - No exemplo fornecido, uma imagem de angiograma é carregada, processada e exibida usando a classe `AngiogramProcessor`.
 
-7. **Example of Use**:
-   - In the provided example, an angiogram image is loaded, processed, and displayed using the `AngiogramProcessor` class.
+## Por que Este Código é Útil
 
-### Why This Code Is Useful
+- Este código é útil para processamento de imagens médicas, especialmente no contexto de angiografia.
+- Ele permite a visualização e análise de vasos sanguíneos em imagens de angiograma.
+- O código melhora a qualidade da imagem, remove ruídos e destaca as estruturas vasculares.
 
-- This code is useful for medical image processing, particularly in the context of angiography.
-- It allows visualization and analysis of blood vessels in angiogram images.
-- The code enhances image quality, removes noise, and highlights the vascular structures.
+## Como Usar Este Código
 
-### How to Use This Code
+1. Substitua `image_path` pelo caminho para sua própria imagem de angiograma.
+2. Personalize os parâmetros de processamento conforme necessário.
+3. Execute o script para visualizar a imagem original e a máscara de vasos.
+4. Ajuste os limiares de limite e os limiares de tamanho dos componentes conectados para suas imagens específicas.
+5. Integre este código em projetos maiores para análise automatizada de angiogramas.
 
-1. Replace `image_path` with the path to your own angiogram image.
-2. Customize the processing parameters as needed.
-3. Run the script to visualize the original image and the vessel mask.
-4. Adjust the threshold and connected component size thresholds for your specific images.
-5. Integrate this code into larger projects for automated angiogram analysis.
-
----
+Este projeto é mantido pelo Dr. Dheiver Francisco Santos, da Genius AI. Para obter mais informações sobre o autor, visite [LinkedIn](https://www.linkedin.com/in/dheiver-santos) ou envie um email para [dheiver.santos@gmail.com](mailto:dheiver.santos@gmail.com).
